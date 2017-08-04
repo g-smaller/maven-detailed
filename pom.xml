@@ -15,7 +15,7 @@
 
     <groupId>com.dxy.platform</groupId>
     <artifactId>maven-demo</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
 
 
     <!--
@@ -123,7 +123,7 @@
         <url>git@github.com:g-smaller/maven-detailed</url>
         <connection>scm:git:git@github.com:g-smaller/maven-detailed.git</connection>
         <developerConnection>scm:git:git@github.com:g-smaller/maven-detailed.git</developerConnection>
-        <tag>v1.0</tag>
+        <tag>dev</tag>
     </scm>
 
     <organization>
