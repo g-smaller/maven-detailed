@@ -261,6 +261,19 @@
             跳过测试：
                 -Darguments=-DskipTests
             使用-Dmaven.test.skip=true 是无效的
+
+
+            release:clean 清除一些插件生成的相关文件
+            release:prepare
+                扫描项目依赖查看是否有SNAPSHOT, 是否存在未提交的文件, 确定当前release的版本号和下一个迭代的版本号, 插件会运行单元测试,
+                 并向git中提交两次commit, 一次是release版本, 一次是下一个迭代的版本. 并将当前release版本打一个tag并提交到git上面去;
+            release:perform
+                正式发布提交
+                默认会生成api文档，如果默写注释不符合规范的话会造成构建失败，可以加参数-DuseReleaseProfile=false取消构建api文档
+                插件会执行mvn deploy 操作, 并clean掉生成的缓存文件
+            release:rollback
+                回滚，如果prepare的过程中出现了错误可以执行此命令回滚prepare的操作。
+                有两点需要注意：一是在svn服务器上创建的tag无法删除；二是如果执行了release:clean命令的话，无法进行回滚
             -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -269,6 +282,8 @@
                 <configuration>
                     <tagNameFormat>v${project.version}</tagNameFormat>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <!-- 不使用默认的profile -->
+                    <useReleaseProfile>false</useReleaseProfile>
                 </configuration>
             </plugin>
         </plugins>
