@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <!--
     -D 传入属性参数
@@ -17,7 +15,7 @@
 
     <groupId>com.dxy.platform</groupId>
     <artifactId>maven-demo</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
 
     <!--
@@ -52,7 +50,7 @@
                 <sendOnFailure>true</sendOnFailure>
                 <sendOnWarning>true</sendOnWarning>
                 <address>guoqy@dxy.cn</address>
-                <configuration/>
+                <configuration />
             </notifier>
         </notifiers>
     </ciManagement>
@@ -64,10 +62,10 @@
         <mailingList>
             <name>guoqy</name>
             <post>guoqy@dxy.cn</post>
-            <subscribe></subscribe>
-            <unsubscribe></unsubscribe>
+            <subscribe />
+            <unsubscribe />
             <archive>http://mail.dxy.cn</archive>
-            <otherArchives></otherArchives>
+            <otherArchives />
         </mailingList>
     </mailingLists>
 
@@ -125,7 +123,7 @@
         <url>git@github.com:g-smaller/maven-detailed</url>
         <connection>scm:git:git@github.com:g-smaller/maven-detailed.git</connection>
         <developerConnection>scm:git:git@github.com:g-smaller/maven-detailed.git</developerConnection>
-        <tag>dev</tag>
+        <tag>v1.0</tag>
     </scm>
 
     <organization>
@@ -143,7 +141,7 @@
     </properties>
 
     <!-- 依赖管理 -->
-    <dependencyManagement></dependencyManagement>
+    <dependencyManagement />
 
     <!-- 详细依赖描述 -->
     <dependencies>
@@ -234,9 +232,9 @@
                                 <echo message="Empty Tasks" />
                             </target>
                             <tasks>
-                                <echo>Profiles -> Properties[${sourceEncoding}]</echo>
-                                <echo>Profiles -> [${env}]</echo>
-                                <echo>Properties -> [${encoding}]</echo>
+                                <echo>Profiles -&gt; Properties[${sourceEncoding}]</echo>
+                                <echo>Profiles -&gt; [${env}]</echo>
+                                <echo>Properties -&gt; [${encoding}]</echo>
                             </tasks>
                         </configuration>
                     </execution>
