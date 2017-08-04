@@ -122,9 +122,9 @@
     </licenses>
     <!-- Source control Manage -->
     <scm>
-        <url>scm:git:git@git.coding.net:Smaller/maomao-modules.git</url>
-        <connection>scm:git@git.coding.net:Smaller/maomao-modules.git</connection>
-        <developerConnection>scm:git@git.coding.net:Smaller/maomao-modules.git</developerConnection>
+        <url>git@github.com:g-smaller/maven-detailed</url>
+        <connection>scm:git:git@github.com:g-smaller/maven-detailed.git</connection>
+        <developerConnection>scm:git:git@github.com:g-smaller/maven-detailed.git</developerConnection>
         <tag>dev</tag>
     </scm>
 
@@ -139,7 +139,7 @@
     通用配置和变量描述，一般将和子模块之间通用的一些配置变量抽象描述出来
     -->
     <properties>
-        <site.outEncoding>UTF-8</site.outEncoding>
+        <encoding>UTF-8</encoding>
     </properties>
 
     <!-- 依赖管理 -->
@@ -165,6 +165,7 @@
         <filters>
             <filter>${project.basedir}/src/main/resources/fileter.properties</filter>
         </filters>
+
 
         <!--当项目没有规定目标（Maven2 叫做阶段）时的默认值-->
         <defaultGoal>clean</defaultGoal>
@@ -201,6 +202,16 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>${encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.3</version>
                 <configuration>
@@ -225,7 +236,7 @@
                             <tasks>
                                 <echo>Profiles -> Properties[${sourceEncoding}]</echo>
                                 <echo>Profiles -> [${env}]</echo>
-                                <echo>Properties -> [${site.outEncoding}]</echo>
+                                <echo>Properties -> [${encoding}]</echo>
                             </tasks>
                         </configuration>
                     </execution>
@@ -245,15 +256,21 @@
                     <delimiters>
                         <delimiter>${*}</delimiter>
                     </delimiters>
-                    <encoding>UTF-8</encoding>
+                    <encoding>${encoding}</encoding>
                 </configuration>
             </plugin>
+            <!--
+            跳过测试：
+                -Darguments=-DskipTests
+            使用-Dmaven.test.skip=true 是无效的
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.3</version>
                 <configuration>
-                    
+                    <tagNameFormat>v${project.version}</tagNameFormat>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
         </plugins>
@@ -328,4 +345,18 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>nexus-releases</name>
+            <url>http://182.92.236.19:8081/nexus/content/repositories/releases/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>nexus-snapshots</name>
+            <url>http://182.92.236.19:8081/nexus/content/repositories/snapshots/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
