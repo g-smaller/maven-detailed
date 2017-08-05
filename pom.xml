@@ -160,6 +160,7 @@
         <testOutputDirectory>${project.basedir}/target/test-classes</testOutputDirectory>
         <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+        <!-- 默认的filter目录是${basedir}/src/main/fiters/ -->
         <filters>
             <filter>${project.basedir}/src/main/resources/fileter.properties</filter>
         </filters>
@@ -284,6 +285,10 @@
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <!-- 不使用默认的profile -->
                     <useReleaseProfile>false</useReleaseProfile>
+                    <!--  在发布时不检查是否提交 svn 的文件过滤配置 -->
+                    <checkModificationExcludes>
+                        <checkModificationExclude>*.iml</checkModificationExclude>
+                    </checkModificationExcludes>
                 </configuration>
             </plugin>
         </plugins>
