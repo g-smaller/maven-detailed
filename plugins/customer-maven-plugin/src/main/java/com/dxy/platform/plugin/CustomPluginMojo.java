@@ -9,27 +9,40 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 /**
+ *
+ * <pre>
+ *     打印项目中源代码、测试代码目录以及输出目录
+ * </pre>
+ *
  * @goal custom
  *
  * @phase pre-integration-test
  */
-@Mojo(name = "custom")
-public class CustomerPluginMojo extends AbstractMojo {
+@Mojo(name = "info")
+public class CustomPluginMojo extends AbstractMojo {
 
     /**
+     * <pre>
+     *     ${project}
+     * </pre>
      * @parameter expression="${project}"
      * @readonly
      */
-    @Parameter
+    @Parameter(property = "project", defaultValue = "${project}", readonly = true)
     private MavenProject project;
 
     /**
      *
-     * @parameter expression="${custom.prefix}"
+     * <pre>
+     *     打印前缀
+     * </pre>
+     *
+     * @parameter expression="${info.prefix}"
+     *
      * default-value="+++"
      *
      */
-    @Parameter(property = "custom.prefix", defaultValue = "+++")
+    @Parameter(property = "info.prefix", defaultValue = "+++")
     private String prefix;
 
 

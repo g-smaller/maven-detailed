@@ -6,7 +6,7 @@
 
     <groupId>com.dxy.platform.plugin</groupId>
     <artifactId>customer-maven-plugin</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
     <packaging>maven-plugin</packaging>
 
     <parent>
@@ -34,6 +34,10 @@
             <artifactId>maven-plugin-tools-annotations</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
@@ -47,22 +51,11 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>2.5.1</version>
                 <configuration>
-                    <!--[WARNING]Goal prefix is specified as: 'maven-statis-plugin'. Maven currently expects it to be 'statis'.-->
-                    <!-- goalPrefix>maven-statis-plugin</goalPrefix-->
                     <goalPrefix>custom</goalPrefix>
+                    <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>generated-helpmojo</id>
-                        <goals>
-                            <goal>helpmojo</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -299,10 +299,10 @@
             <plugin>
                 <groupId>com.dxy.platform.plugin</groupId>
                 <artifactId>customer-maven-plugin</artifactId>
-                <version>1.1-SNAPSHOT</version>
+                <version>1.1</version>
                 <executions>
                     <execution>
-                        <id>custom</id>
+                        <id>customer</id>
                         <phase>test</phase>
                         <goals>
                             <goal>custom</goal>
@@ -312,6 +312,13 @@
                 <configuration>
                     <prefix>********* </prefix>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.plugin-tools</groupId>
+                        <artifactId>maven-plugin-annotations</artifactId>
+                        <version>3.3</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>
