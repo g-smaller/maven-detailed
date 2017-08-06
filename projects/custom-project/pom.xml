@@ -12,6 +12,8 @@
     -U 强制去远程参考更新snapshot包
     -->
 
+
+    <!-- 基本设置 Start -->
     <!-- 描述这个POM文件是遵从哪个版本的项目描述符。 -->
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -22,7 +24,7 @@
     </parent>
 
     <artifactId>custom-project</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <!--
     打包的格式，可以为：pom , jar , maven-plugin , ejb , war , ear , rar , par
 
@@ -30,49 +32,42 @@
     -->
     <packaging>jar</packaging>
 
+    <!--
+    通用配置和变量描述，一般将和子模块之间通用的一些配置变量抽象描述出来
+    -->
+    <properties>
+        <encoding>UTF-8</encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <!-- 依赖管理 -->
+    <dependencyManagement />
+
+    <!-- 详细依赖描述 -->
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dxy.platform</groupId>
+            <artifactId>common-utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <!-- 基本设置 End -->
+
+
+    <!-- 项目信息 Start -->
+    <name>Customer::Project</name>
+
     <url>http://www.siblings.top/docs</url>
 
     <description>Maven 学习</description>
-
-    <!-- Bug 追踪系统 -->
-    <issueManagement>
-        <system>PM</system>
-        <url>http://pm.dxy.net/my/page</url>
-    </issueManagement>
-
-    <!--
-    Continuous integration
-    持续集成
-     -->
-    <ciManagement>
-        <system>Jenkins</system>
-        <url>http://jk.dxy.net</url>
-        <notifiers>
-            <notifier>
-                <type>email</type>
-                <sendOnSuccess>true</sendOnSuccess>
-                <sendOnError>true</sendOnError>
-                <sendOnFailure>true</sendOnFailure>
-                <sendOnWarning>true</sendOnWarning>
-                <address>guoqy@dxy.cn</address>
-                <configuration />
-            </notifier>
-        </notifiers>
-    </ciManagement>
-
-    <!-- 项目创建日期 -->
-    <inceptionYear>2017</inceptionYear>
-
-    <mailingLists>
-        <mailingList>
-            <name>guoqy</name>
-            <post>guoqy@dxy.cn</post>
-            <subscribe />
-            <unsubscribe />
-            <archive>http://mail.dxy.cn</archive>
-            <otherArchives />
-        </mailingList>
-    </mailingLists>
 
     <developers>
         <developer>
@@ -123,38 +118,15 @@
             <comments>A business-friendly OSS license</comments>
         </license>
     </licenses>
-    <!-- Source control Manage -->
-    <scm>
-        <url>git@github.com:g-smaller/maven-detailed</url>
-        <connection>scm:git:git@github.com:g-smaller/maven-detailed.git</connection>
-        <developerConnection>scm:git:git@github.com:g-smaller/maven-detailed.git</developerConnection>
-        <tag>dev</tag>
-    </scm>
 
     <organization>
         <url>http://www.dxy.cn</url>
         <name>Dxy</name>
     </organization>
 
+    <!-- 项目信息 End -->
 
-
-    <!--
-    通用配置和变量描述，一般将和子模块之间通用的一些配置变量抽象描述出来
-    -->
-    <properties>
-        <encoding>UTF-8</encoding>
-    </properties>
-
-    <!-- 依赖管理 -->
-    <dependencyManagement />
-
-    <!-- 详细依赖描述 -->
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-    </dependencies>
+    <!-- 构建设置 Start -->
 
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>
@@ -366,6 +338,61 @@
         </plugins>
     </reporting>
 
+    <!-- 构建设置 End -->
+
+
+    <!-- 环境设置 Start -->
+
+    <!-- Bug 追踪系统 -->
+    <issueManagement>
+        <system>PM</system>
+        <url>http://pm.dxy.net/my/page</url>
+    </issueManagement>
+
+    <!--
+    Continuous integration
+    持续集成
+     -->
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>http://jk.dxy.net</url>
+        <notifiers>
+            <notifier>
+                <type>email</type>
+                <sendOnSuccess>true</sendOnSuccess>
+                <sendOnError>true</sendOnError>
+                <sendOnFailure>true</sendOnFailure>
+                <sendOnWarning>true</sendOnWarning>
+                <address>guoqy@dxy.cn</address>
+                <configuration />
+            </notifier>
+        </notifiers>
+    </ciManagement>
+
+    <!-- 项目创建日期 -->
+    <inceptionYear>2017</inceptionYear>
+
+    <mailingLists>
+        <mailingList>
+            <name>guoqy</name>
+            <post>guoqy@dxy.cn</post>
+            <subscribe />
+            <unsubscribe />
+            <archive>http://mail.dxy.cn</archive>
+            <otherArchives />
+        </mailingList>
+    </mailingLists>
+
+
+    <!-- Source control Manage -->
+    <scm>
+        <url>git@github.com:g-smaller/maven-detailed</url>
+        <connection>scm:git:git@github.com:g-smaller/maven-detailed.git</connection>
+        <developerConnection>scm:git:git@github.com:g-smaller/maven-detailed.git</developerConnection>
+        <tag>dev</tag>
+    </scm>
+
+
     <profiles>
         <profile>
             <id>dev</id>
@@ -429,5 +456,7 @@
             <uniqueVersion>true</uniqueVersion>
         </snapshotRepository>
     </distributionManagement>
+
+    <!-- 环境设置 End -->
 
 </project>

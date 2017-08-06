@@ -15,6 +15,7 @@
     <version>1.0</version>
     <modules>
         <module>custom-project</module>
+        <module>common-utils</module>
     </modules>
 
 
