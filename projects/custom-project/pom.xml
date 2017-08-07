@@ -267,6 +267,64 @@
                     </checkModificationExcludes>
                 </configuration>
             </plugin>
+            <!--
+            跳过测试: -DskipTests
+            跳过测试代码的编译: -Dmaven.test.skip=true
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20</version>
+                <configuration>
+                    <!-- -DskipTests -->
+                    <skipTests>false</skipTests>
+                    <!--
+                    -Dmaven.test.skip=true
+                    <skip></skip>
+                    -->
+                    <includes>
+                        <include>com.dxy.platform.*Test.java</include>
+                        <include>com.dxy.platform.*TestCase.java</include>
+                        <include>com.dxy.platform.*Test*.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>com.dxy.platform.*NAuto</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+
+            <!--
+            maven-jar-plugin有两个目标，分别为jar和test-jar。
+            这两个目标都默认绑定到default生命周期的package阶段运行，
+            只是test-jar并没有在超级POM中配置，因此需要我们另外在pom中配置。
+
+            <dependency>
+                <groupId>xxx</groupId>
+                <artifactId>xxx</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>com.dxy.platform.plugin</groupId>
